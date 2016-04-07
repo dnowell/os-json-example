@@ -1,0 +1,30 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "name": "os-json-example-pod",
+        "labels": {
+            "name": "frontendhttp"
+        }
+    },
+    "spec": {
+        "containers": [{
+            "name": "os-json-example-frontend",
+            "image": "nginx",
+            "ports": [{
+                "containerPort": 80,
+                "name": "http-server"
+            }],
+            "volumeMounts": [{
+                "mountPath": "/var/www/html",
+                "name": "pv0005"
+            }]
+        }],
+        "volumes": [{
+            "name": "pv0005",
+            "persistentVolumeClaim": {
+                "claimName": "nfs-claim1"
+            }
+        }]
+    }
+}
